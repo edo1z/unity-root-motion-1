@@ -904,7 +904,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0.5
-  TurnSpeed: 3
+  TurnSpeedX: 0.5
+  TurnSpeedY: 0.2
+  cameraFollowTarget: {fileID: 1149096260}
 --- !u!114 &2116190874
 MonoBehaviour:
   m_ObjectHideFlags: 0

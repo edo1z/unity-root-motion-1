@@ -4,9 +4,11 @@ public class PlayerController : MonoBehaviour
 {
     // Settings
     public float Speed = 0.5f;
-    public float TurnSpeed = 3f;
+    public float TurnSpeedX = 0.5f; // TODO Gamepad‚¾‚Æ’x‚¢
+    public float TurnSpeedY = 0.2f; // TODO Gamepad‚¾‚Æ’x‚¢
 
     // Objects
+    public Transform cameraFollowTarget;
     private Animator anim;
     private PlayerInputsHandler inputs;
 
@@ -21,10 +23,18 @@ public class PlayerController : MonoBehaviour
 
     private void Aim()
     {
+        // …•½•ûŒü
         Vector2 rotationInput = inputs.GetLook();
         Vector3 rotation = transform.eulerAngles;
-        rotation.y += rotationInput.x * TurnSpeed;
+        rotation.y += rotationInput.x * TurnSpeedX;
         transform.rotation = Quaternion.Euler(rotation);
+
+        // ‚’¼•ûŒü
+        rotation = cameraFollowTarget.localRotation.eulerAngles;
+        rotation.x -= rotationInput.y * TurnSpeedY;
+        if (rotation.x > 180) rotation.x -= 360;
+        rotation.x = Mathf.Clamp(rotation.x, -85, 85);
+        cameraFollowTarget.localRotation = Quaternion.Euler(rotation);
     }
 
     private void Move()
