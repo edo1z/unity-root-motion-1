@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     // Settings
     public float Speed = 0.5f;
+    public float TurnSpeed = 3f;
 
     // Objects
     private Animator anim;
@@ -18,7 +19,15 @@ public class PlayerController : MonoBehaviour
         inputs = GetComponent<PlayerInputsHandler>();
     }
 
-    private void FixedUpdate()
+    private void Aim()
+    {
+        Vector2 rotationInput = inputs.GetLook();
+        Vector3 rotation = transform.eulerAngles;
+        rotation.y += rotationInput.x * TurnSpeed;
+        transform.rotation = Quaternion.Euler(rotation);
+    }
+
+    private void Move()
     {
         Vector2 direction = inputs.GetMove();
         float speed = Mathf.Abs(direction.x) + Mathf.Abs(direction.y);
@@ -27,5 +36,11 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Speed", speed);
         anim.SetFloat("DirectionX", direction.x);
         anim.SetFloat("DirectionY", direction.y);
+    }
+
+    private void FixedUpdate()
+    {
+        Aim();
+        Move();
     }
 }
