@@ -284,10 +284,10 @@
                 {
                     "name": "",
                     "id": "d42f2b00-8527-4035-b5a3-95b7afccb82d",
-                    "path": "",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -295,10 +295,10 @@
                 {
                     "name": "",
                     "id": "bb8c1e51-2ebf-4ac8-9f70-2bd38471c537",
-                    "path": "",
+                    "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -306,10 +306,10 @@
                 {
                     "name": "",
                     "id": "9f97d162-7a99-4fb1-b915-d06dba0cd679",
-                    "path": "",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false

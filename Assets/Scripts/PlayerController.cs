@@ -43,9 +43,11 @@ public class PlayerController : MonoBehaviour
         float speed = Mathf.Abs(direction.x) + Mathf.Abs(direction.y);
         speed = Mathf.Clamp(speed, 0f, 1f);
         speed = Mathf.SmoothDamp(anim.GetFloat("Speed"), speed, ref currentVelocity.y, 0.2f);
+        bool isSprinting = inputs.GetSprint() && direction.y > 0.1f;
         anim.SetFloat("Speed", speed);
         anim.SetFloat("DirectionX", direction.x);
         anim.SetFloat("DirectionY", direction.y);
+        anim.SetBool("IsSprinting", isSprinting);
     }
 
     private void FixedUpdate()
