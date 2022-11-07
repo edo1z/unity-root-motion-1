@@ -19,6 +19,12 @@ public class PlayerAiming : MonoBehaviour
         inputs = GetComponent<PlayerInputsHandler>();
     }
 
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     public void Aim()
     {
         // …•½•ûŒü
