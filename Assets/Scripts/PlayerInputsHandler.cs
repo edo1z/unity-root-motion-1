@@ -5,7 +5,7 @@ public class PlayerInputsHandler : MonoBehaviour
 {
     private PlayerInput _input;
     private Vector2 _move, _look;
-    private bool _sprint, _crouch, _jump;
+    private bool _sprint, _crouch, _jump, _fire;
 
     private void Awake()
     {
@@ -24,6 +24,8 @@ public class PlayerInputsHandler : MonoBehaviour
         _input.actions["Crouch"].canceled += OnCrouchStop;
         _input.actions["Jump"].started += OnJumpStart;
         _input.actions["Jump"].canceled += OnJumpStop;
+        _input.actions["Fire"].started += OnFireStart;
+        _input.actions["Fire"].canceled += OnFireStop;
     }
 
     private void OnDisable()
@@ -38,6 +40,8 @@ public class PlayerInputsHandler : MonoBehaviour
         _input.actions["Crouch"].canceled -= OnCrouchStop;
         _input.actions["Jump"].started -= OnJumpStart;
         _input.actions["Jump"].canceled -= OnJumpStop;
+        _input.actions["Fire"].started -= OnFireStart;
+        _input.actions["Fire"].canceled -= OnFireStop;
     }
 
     private void OnMove(InputAction.CallbackContext context)
@@ -79,6 +83,16 @@ public class PlayerInputsHandler : MonoBehaviour
         _jump = false;
     }
 
+    private void OnFireStart(InputAction.CallbackContext context)
+    {
+        _fire = true;
+    }
+
+    private void OnFireStop(InputAction.CallbackContext context)
+    {
+        _fire = false;
+    }
+
     public Vector2 GetMove()
     {
         return _move;
@@ -102,6 +116,11 @@ public class PlayerInputsHandler : MonoBehaviour
     public bool GetJump()
     {
         return _jump;
+    }
+
+    public bool GetFire()
+    {
+        return _fire;
     }
 
 }

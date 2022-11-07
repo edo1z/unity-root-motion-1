@@ -824,8 +824,8 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
+  m_UpdateMethod: 0
+  m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -3317,6 +3317,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: a985726116dba5d40b97eaa562be5b31, type: 2}
+    - target: {fileID: 95389170962898660, guid: f11fc98cf1e8d5547a9b2ec85cc9c664,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f11fc98cf1e8d5547a9b2ec85cc9c664, type: 3}
 --- !u!4 &2116190870 stripped
@@ -3350,9 +3355,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0.5
-  TurnSpeedX: 0.5
-  TurnSpeedY: 0.2
-  cameraFollowTarget: {fileID: 1149096260}
 --- !u!114 &2116190874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3436,6 +3438,24 @@ MonoBehaviour:
   - m_Rig: {fileID: 452820660}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &2116190879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635554825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0602d4eaa5b1ae48a7c266b13935872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurnSpeedX: 0.5
+  TurnSpeedY: 0.2
+  aimDuration: 0.3
+  cameraFollowTarget: {fileID: 1149096260}
+  weaponAiming: {fileID: 1361334651}
+  laser: {fileID: 56891176}
 --- !u!1 &2125579792
 GameObject:
   m_ObjectHideFlags: 0
