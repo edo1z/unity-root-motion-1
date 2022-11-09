@@ -50,17 +50,18 @@ public class PlayerAiming : MonoBehaviour
 
     private void Update()
     {
-        if (activeWeapon && inputs.GetFire() && weaponAiming.weight < 1f)
-        {
-            weaponAiming.weight += Time.deltaTime / aimDuration;
-        }
-        else if (!activeWeapon || (!inputs.GetFire() && weaponAiming.weight > 0))
-        {
-            weaponAiming.weight -= Time.deltaTime / aimDuration;
-        }
+        //if (activeWeapon.weapon && inputs.GetFire() && weaponAiming.weight < 1f)
+        //{
+        //    weaponAiming.weight += Time.deltaTime / aimDuration;
+        //}
+        //else if (!activeWeapon.weapon || (!inputs.GetFire() && weaponAiming.weight > 0))
+        //{
+        //    weaponAiming.weight -= Time.deltaTime / aimDuration;
+        //}
+        weaponAiming.weight = 1f;
 
         // e‚ÌƒŒ[ƒU•\Ž¦‚ÌON/OFF
-        if (weaponAiming.weight > 0.5f)
+        if (activeWeapon.weapon && weaponAiming.weight > 0.5f)
         {
             laser.SetActive(true);
         }
