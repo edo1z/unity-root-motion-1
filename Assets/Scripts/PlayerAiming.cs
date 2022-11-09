@@ -13,10 +13,12 @@ public class PlayerAiming : MonoBehaviour
     public Rig weaponAiming;
     public GameObject laser;
     private PlayerInputsHandler inputs;
+    private ActiveWeapon activeWeapon;
 
     private void Awake()
     {
         inputs = GetComponent<PlayerInputsHandler>();
+        activeWeapon = GetComponent<ActiveWeapon>();
     }
 
     private void Start()
@@ -48,11 +50,11 @@ public class PlayerAiming : MonoBehaviour
 
     private void Update()
     {
-        if (inputs.GetFire() && weaponAiming.weight < 1f)
+        if (activeWeapon && inputs.GetFire() && weaponAiming.weight < 1f)
         {
             weaponAiming.weight += Time.deltaTime / aimDuration;
         }
-        else if (!inputs.GetFire() && weaponAiming.weight > 0)
+        else if (!activeWeapon || (!inputs.GetFire() && weaponAiming.weight > 0))
         {
             weaponAiming.weight -= Time.deltaTime / aimDuration;
         }
