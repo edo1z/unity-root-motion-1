@@ -879,6 +879,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1600281987}
     m_Modifications:
+    - target: {fileID: 1983173522, guid: bccec2714ac76f746bde344a750c36a4, type: 3}
+      propertyPath: weaponAnimation
+      value: 
+      objectReference: {fileID: 7400000, guid: d56627ee5f225024bb0be8880dc673a7, type: 2}
     - target: {fileID: 5894451032944644782, guid: bccec2714ac76f746bde344a750c36a4,
         type: 3}
       propertyPath: m_RootOrder
@@ -2680,6 +2684,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5179309461814689820, guid: af2ad28e749b654419ef88a31bae97e2,
+        type: 3}
+      propertyPath: weaponAnimation
+      value: 
+      objectReference: {fileID: 7400000, guid: 1579380c060da354eae8066a46b240aa, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af2ad28e749b654419ef88a31bae97e2, type: 3}
 --- !u!1001 &1464682918
@@ -2869,6 +2878,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -92.236
       objectReference: {fileID: 0}
+    - target: {fileID: 4150737733652762879, guid: e1363f8c4eeeb134dbdfcfaa95a76331,
+        type: 3}
+      propertyPath: weaponAnimation
+      value: 
+      objectReference: {fileID: 7400000, guid: 20861b2ec61a7ee408f68535eb399196, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1363f8c4eeeb134dbdfcfaa95a76331, type: 3}
 --- !u!1 &1538717770
@@ -3709,6 +3723,8 @@ MonoBehaviour:
   crossHairTarget: {fileID: 0}
   handIk: {fileID: 452820660}
   weaponParent: {fileID: 171812866}
+  weaponRightGrip: {fileID: 1964814291}
+  weaponLeftGrip: {fileID: 211842092}
   weapon: {fileID: 0}
 --- !u!114 &2116190882
 MonoBehaviour:
