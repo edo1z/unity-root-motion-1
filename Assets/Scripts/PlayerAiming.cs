@@ -3,71 +3,71 @@ using UnityEngine.Animations.Rigging;
 
 public class PlayerAiming : MonoBehaviour
 {
-    // Settings
-    public float TurnSpeedX = 0.5f; // TODO Gamepad‚¾‚Æ’x‚¢
-    public float TurnSpeedY = 0.2f; // TODO Gamepad‚¾‚Æ’x‚¢
-    public float aimDuration = 0.3f;
+  // Settings
+  public float TurnSpeedX = 0.5f; // TODO Gamepadï¿½ï¿½ï¿½Æ’xï¿½ï¿½
+  public float TurnSpeedY = 0.2f; // TODO Gamepadï¿½ï¿½ï¿½Æ’xï¿½ï¿½
+  public float aimDuration = 0.3f;
 
-    // Objects
-    public Transform cameraFollowTarget;
-    public Rig weaponAiming;
-    public GameObject laser;
-    private PlayerInputsHandler inputs;
-    private ActiveWeapon activeWeapon;
+  // Objects
+  public Transform cameraFollowTarget;
+  public Rig weaponAiming;
+  // public GameObject laser;
+  private PlayerInputsHandler inputs;
+  private ActiveWeapon activeWeapon;
 
-    private void Awake()
-    {
-        inputs = GetComponent<PlayerInputsHandler>();
-        activeWeapon = GetComponent<ActiveWeapon>();
-    }
+  private void Awake()
+  {
+    inputs = GetComponent<PlayerInputsHandler>();
+    activeWeapon = GetComponent<ActiveWeapon>();
+  }
 
-    private void Start()
-    {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+  private void Start()
+  {
+    Cursor.visible = false;
+    Cursor.lockState = CursorLockMode.Locked;
+  }
 
-    public void Aim()
-    {
-        // …•½•ûŒü
-        Vector2 rotationInput = inputs.GetLook();
-        Vector3 rotation = transform.eulerAngles;
-        rotation.y += rotationInput.x * TurnSpeedX;
-        transform.rotation = Quaternion.Euler(rotation);
+  public void Aim()
+  {
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    Vector2 rotationInput = inputs.GetLook();
+    Vector3 rotation = transform.eulerAngles;
+    rotation.y += rotationInput.x * TurnSpeedX;
+    transform.rotation = Quaternion.Euler(rotation);
 
-        // ‚’¼•ûŒü
-        rotation = cameraFollowTarget.localRotation.eulerAngles;
-        rotation.x -= rotationInput.y * TurnSpeedY;
-        if (rotation.x > 180) rotation.x -= 360;
-        rotation.x = Mathf.Clamp(rotation.x, -85, 85);
-        cameraFollowTarget.localRotation = Quaternion.Euler(rotation);
-    }
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    rotation = cameraFollowTarget.localRotation.eulerAngles;
+    rotation.x -= rotationInput.y * TurnSpeedY;
+    if (rotation.x > 180) rotation.x -= 360;
+    rotation.x = Mathf.Clamp(rotation.x, -85, 85);
+    cameraFollowTarget.localRotation = Quaternion.Euler(rotation);
+  }
 
-    private void FixedUpdate()
-    {
-        Aim();
-    }
+  private void FixedUpdate()
+  {
+    Aim();
+  }
 
-    private void Update()
-    {
-        //if (activeWeapon.weapon && inputs.GetFire() && weaponAiming.weight < 1f)
-        //{
-        //    weaponAiming.weight += Time.deltaTime / aimDuration;
-        //}
-        //else if (!activeWeapon.weapon || (!inputs.GetFire() && weaponAiming.weight > 0))
-        //{
-        //    weaponAiming.weight -= Time.deltaTime / aimDuration;
-        //}
-        weaponAiming.weight = 1f;
+  private void Update()
+  {
+    //if (activeWeapon.weapon && inputs.GetFire() && weaponAiming.weight < 1f)
+    //{
+    //    weaponAiming.weight += Time.deltaTime / aimDuration;
+    //}
+    //else if (!activeWeapon.weapon || (!inputs.GetFire() && weaponAiming.weight > 0))
+    //{
+    //    weaponAiming.weight -= Time.deltaTime / aimDuration;
+    //}
+    weaponAiming.weight = 1f;
 
-        // e‚ÌƒŒ[ƒU•\Ž¦‚ÌON/OFF
-        if (activeWeapon.weapon && weaponAiming.weight > 0.5f)
-        {
-            laser.SetActive(true);
-        }
-        else
-        {
-            laser.SetActive(false);
-        }
-    }
+    // ï¿½eï¿½Ìƒï¿½ï¿½[ï¿½Uï¿½\ï¿½ï¿½ï¿½ï¿½ON/OFF
+    // if (activeWeapon.weapon && weaponAiming.weight > 0.5f)
+    // {
+    //     laser.SetActive(true);
+    // }
+    // else
+    // {
+    //     laser.SetActive(false);
+    // }
+  }
 }

@@ -72,6 +72,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 .vsconfig
+.vscode/*
 UpgradeLog*.htm
 
 *.fbx
@@ -85,3 +86,4 @@ FImpossible*
 Plugins*
 _TerrainAutoUpgrade*
 Assets/Animations*
+Assets/Resources/*
