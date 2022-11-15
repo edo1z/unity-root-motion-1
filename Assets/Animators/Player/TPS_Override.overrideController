@@ -7,5 +7,7 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TPS_Override
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: a985726116dba5d40b97eaa562be5b31, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: dfc27965a92f7ca4091c1cfecf4d77d3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e3d72927259af6c4cb9e16dc0a1cf413, type: 2}
