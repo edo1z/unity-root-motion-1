@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 
 public class PlayerAiming : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class PlayerAiming : MonoBehaviour
 
   // Objects
   public Transform cameraFollowTarget;
-  public Rig weaponAiming;
+
   // public GameObject laser;
   private PlayerInputsHandler inputs;
   private ActiveWeapon activeWeapon;
@@ -29,13 +28,11 @@ public class PlayerAiming : MonoBehaviour
 
   public void Aim()
   {
-    // ��������
     Vector2 rotationInput = inputs.GetLook();
     Vector3 rotation = transform.eulerAngles;
     rotation.y += rotationInput.x * TurnSpeedX;
     transform.rotation = Quaternion.Euler(rotation);
 
-    // ��������
     rotation = cameraFollowTarget.localRotation.eulerAngles;
     rotation.x -= rotationInput.y * TurnSpeedY;
     if (rotation.x > 180) rotation.x -= 360;
@@ -48,26 +45,4 @@ public class PlayerAiming : MonoBehaviour
     Aim();
   }
 
-  private void Update()
-  {
-    //if (activeWeapon.weapon && inputs.GetFire() && weaponAiming.weight < 1f)
-    //{
-    //    weaponAiming.weight += Time.deltaTime / aimDuration;
-    //}
-    //else if (!activeWeapon.weapon || (!inputs.GetFire() && weaponAiming.weight > 0))
-    //{
-    //    weaponAiming.weight -= Time.deltaTime / aimDuration;
-    //}
-    weaponAiming.weight = 1f;
-
-    // �e�̃��[�U�\����ON/OFF
-    // if (activeWeapon.weapon && weaponAiming.weight > 0.5f)
-    // {
-    //     laser.SetActive(true);
-    // }
-    // else
-    // {
-    //     laser.SetActive(false);
-    // }
-  }
 }

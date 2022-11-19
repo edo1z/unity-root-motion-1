@@ -8,15 +8,19 @@ public class ActiveWeapon : MonoBehaviour
   public Transform weaponParent;
   public Transform weaponRightGrip;
   public Transform weaponLeftGrip;
+  public Animator rigController;
 
   public Weapon weapon;
-  private Animator anim;
-  private AnimatorOverrideController overrides;
+
+  private PlayerInputsHandler inputs;
+
+  private void Awake()
+  {
+    inputs = GetComponent<PlayerInputsHandler>();
+  }
 
   private void Start()
   {
-    anim = GetComponent<Animator>();
-    overrides = anim.runtimeAnimatorController as AnimatorOverrideController;
     Weapon existingWeapon = GetComponentInChildren<Weapon>();
     if (existingWeapon)
     {
@@ -26,17 +30,15 @@ public class ActiveWeapon : MonoBehaviour
 
   private void Update()
   {
-    if (!weapon)
+    if (inputs.GetEquipToggle())
     {
-      handIk.weight = 0f;
-      anim.SetLayerWeight(1, 0f);
+      bool isHolstered = rigController.GetBool("holster_weapon");
+      rigController.SetBool("holster_weapon", !isHolstered);
     }
   }
 
   public void Equip(Weapon newWeapon)
   {
-    Debug.Log("Equip!");
-
     // 武器を複製
     Weapon newWeaponCopy = Instantiate(newWeapon);
 
@@ -50,20 +52,7 @@ public class ActiveWeapon : MonoBehaviour
     weapon.transform.parent = weaponParent;
     weapon.transform.localPosition = Vector3.zero;
     weapon.transform.localRotation = Quaternion.identity;
-    handIk.weight = 1f;
-    anim.SetLayerWeight(1, 1f);
-    overrides["weapon_anim_empty"] = weapon.weaponAnimation;
+    rigController.Play("equip_" + weapon.weaponCode);
   }
 
-  [ContextMenu("Save weapon pose")]
-  private void SaveWeaponPose()
-  {
-    GameObjectRecorder recorder = new GameObjectRecorder(gameObject);
-    recorder.BindComponentsOfType<Transform>(weaponParent.gameObject, false);
-    recorder.BindComponentsOfType<Transform>(weaponRightGrip.gameObject, false);
-    recorder.BindComponentsOfType<Transform>(weaponLeftGrip.gameObject, false);
-    recorder.TakeSnapshot(0f);
-    recorder.SaveToClip(weapon.weaponAnimation);
-    UnityEditor.AssetDatabase.SaveAssets();
-  }
 }
